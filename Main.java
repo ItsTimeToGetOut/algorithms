@@ -23,15 +23,24 @@ class Main {
         return a;
   }
 
+  public boolean checkTwoArrayContainSameElement(String arr1[], String arr2[]){
+    HashSet<String> table = new HashSet<String>();
+    for(int i=0;i<arr1.length;i++)if(!table.contains(arr1[i]))table.add(arr1[i]);
+    for(int i=0;i<arr2.length;i++)if(table.contains(arr2[i]))return true;
+      return false;
+  }
+
 
   public static void main(String[] args) {
 
     Main a = new Main();
 
-    String arr[]={"nemo"};
+    String arr1[]={"nemo", "a", "b", "d"};
+    String arr2[]={"c", "e", "f"};
 
     double start = System.currentTimeMillis();
 
+    // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
 

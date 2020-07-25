@@ -30,16 +30,21 @@ class Main {
       return false;
   }
 
+    public boolean checkTwoArrayContainSameElementBRUTEFORCE(String arr1[], String arr2[]){
+    for(int i=0;i<arr1.length;i++)for(int j=0;j<arr2.length;j++)if(arr1[i]==arr2[j])return true;
+      return false;
+  }
 
   public static void main(String[] args) {
 
     Main a = new Main();
 
-    String arr1[]={"nemo", "a", "b", "d"};
-    String arr2[]={"c", "e", "f"};
+    String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
+    String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
 
     double start = System.currentTimeMillis();
 
+    // System.out.println(a.checkTwoArrayContainSameElementBRUTEFORCE(arr1, arr2));
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));

@@ -7,5 +7,7 @@ To run the program, uncomment the method you want to use with appropriate parame
 
 then 
 >*javac Main.java*<br>
-(Fix compilation errors (if any))<br>
->java Main
+
+-->Fix compilation errors(if any)<br>
+
+>*java Main*

@@ -30,6 +30,16 @@ class Main {
       return false;
   }
 
+public String firstRecurringCharachterHM(String arr[]){
+    HashMap<String, Integer> table = new HashMap<String, Integer>();
+    for(int i=0;i<arr.length;i++){
+      if(!table.containsKey(arr[i]))table.put(arr[i], 1);
+      else return arr[i];
+    }
+    return "Not Found";
+  }
+
+
     public boolean checkTwoArrayContainSameElementBRUTEFORCE(String arr1[], String arr2[]){
     for(int i=0;i<arr1.length;i++)for(int j=0;j<arr2.length;j++)if(arr1[i]==arr2[j])return true;
       return false;
@@ -64,6 +74,7 @@ class Main {
 
     double start = System.currentTimeMillis();
 
+    // System.out.println(a.firstRecurringCharachterHM(arr1));
     // System.out.println(a.checkTwoArrayContainSameElementBRUTEFORCE(arr1, arr2));
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);

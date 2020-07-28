@@ -1,6 +1,27 @@
 import java.io.*;
 import java.util.*;
 
+class UF{
+  public UF(int N){
+    id = new int[N];
+    for(int i=0;i<N;i++)id[i]=i;
+  }
+  private int[] id;
+  boolean connected(int p, int q){
+    return id[p]==id[q];
+  }
+  void unionQuadratic(int p, int q){
+    int pid=id[p], qid=id[q];
+    for(int i=0;i<id.length;i++)if(id[i]==pid)id[i]=qid;
+  }
+}
+
+class NodeS {
+  NodeS(int v, int n){value=v; next=n;}
+  int value;
+  int next;
+}
+
 class LinkedList{
   Node head;
   public static class Node {
@@ -44,6 +65,7 @@ class LinkedList{
   } 
 
 }
+
 
 class Main{
 
@@ -123,7 +145,12 @@ class Main{
     String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
     String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
 
+
+
     double start = System.currentTimeMillis();
+
+    // a.main(arr1);  //STACK OVERFLOW ERROR
+
 
 
 
@@ -132,7 +159,21 @@ class Main{
     // LinkedList.reverse(list);
     // LinkedList.printList(list);
 
+    //----- STACKS ------//
+    // Stack<NodeS> stack = new Stack<NodeS>();
+    // NodeS node = new NodeS(1, 2);
+    // stack.push(node);
+    // System.out.println(stack.peek().next);
 
+    //----- QUEUES -----//
+
+    //before running this comment out the preimplemented linkedlist class and make sure to delete the 
+    //.class file in the directory
+
+    // Queue<NodeS> queue = new LinkedList<NodeS>();
+    // NodeS node = new NodeS(1, 2);
+    // queue.add(node);
+    // System.out.println(queue.peek().next);
 
     //----- GENERAL METHODS -----//
     // System.out.println(a.firstRecurringCharachterHM(arr1));
@@ -140,6 +181,9 @@ class Main{
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
+
+    //----- UNION FIND -----//
+
 
     double end = System.currentTimeMillis();
     System.out.println((end-start)+" ms");

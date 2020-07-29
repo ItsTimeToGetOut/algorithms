@@ -1,6 +1,47 @@
 import java.io.*;
 import java.util.*;
 
+class Tree{
+  TNode root;
+  Tree(){
+    root=null;
+  }
+  public void insertInTree(NodeT node){
+    root = insertRecursive(root, node);
+  }
+
+  public TNode insertRecursive(TNode root, NodeT node){
+    if(root==null){
+      TNode tmp=new TNode(node);
+      return tmp;}
+    if(node.a>=root.data.a)root.right=insertRecursive(root.right, node);
+    else root.left=insertRecursive(root.left, node);
+    return root;
+  }
+}
+
+class TNode{
+  TNode left;
+  TNode right;
+  NodeT data;
+  TNode(NodeT object){
+    data=object;
+    left=null;
+    right=null;
+  }
+}
+
+class NodeT{
+  int a;
+  int b;
+  String name;
+  NodeT(int data1, int data2, String data3){
+    a=data1;
+    b=data2;
+    name=data3;
+  }
+}
+
 class UF{
   public UF(int N){
     id = new int[N];
@@ -174,6 +215,16 @@ class Main{
     // NodeS node = new NodeS(1, 2);
     // queue.add(node);
     // System.out.println(queue.peek().next);
+
+    //----- TREES -----//
+    Tree tree = new Tree();
+    NodeT node = new NodeT(1, 2, "Shubhendu Singh");
+    NodeT node2 = new NodeT(2, 3, "Mayank Tolani");
+    tree.insertInTree(node);
+    tree.insertInTree(node2);
+    tree.insertInTree(new NodeT(0, 1, "Divya Dadarya"));
+    System.out.println(tree.root.left.data.name);
+
 
     //----- GENERAL METHODS -----//
     // System.out.println(a.firstRecurringCharachterHM(arr1));

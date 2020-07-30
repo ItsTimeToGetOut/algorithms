@@ -6,17 +6,74 @@ class Tree{
   Tree(){
     root=null;
   }
+
+
   public void insertInTree(NodeT node){
     root = insertRecursive(root, node);
   }
 
+
   public TNode insertRecursive(TNode root, NodeT node){
     if(root==null){
       TNode tmp=new TNode(node);
-      return tmp;}
+      return tmp;
+    }
     if(node.a>=root.data.a)root.right=insertRecursive(root.right, node);
     else root.left=insertRecursive(root.left, node);
     return root;
+  }
+
+
+  void printTree(){
+    inorder(root);
+  }
+
+
+  void inorder(TNode root){
+    if(root!=null){
+      inorder(root.left);
+      System.out.println(root.data.a);
+      System.out.println(root.data.b);
+      System.out.println(root.data.name);
+      System.out.println();
+      inorder(root.right);
+    }
+  }
+
+  NodeT searchTreeByIdA(int a){
+    return searchTreeA(a, root);
+  }
+
+  NodeT searchTreeA(int a, TNode root){
+    if(root==null)return new NodeT(-1, -1, "Not Found");
+    if(root.data.a>a)return searchTreeA(a, root.left);
+    else if(root.data.a<a)return searchTreeA(a, root.right);
+    else return root.data;
+  }
+
+  void delete(int a){
+    deleteFromTreeA(a, root);
+  }
+
+  TNode deleteFromTreeA(int a, TNode root){
+    if(root==null)return null;
+    if(root.data.a>a)root.left=deleteFromTreeA(a, root.left);
+    else if(root.data.a<a)root.right=deleteFromTreeA(a, root.right);
+    else {
+      if(root.left==null&&root.right==null)return null;
+      else if(root.left==null)return root.right;
+      else if(root.right==null)return root.left;
+      else {
+        TNode tmp=root;
+        TNode tmp2=root;
+        root=root.right;
+        while(root.left!=null)root=root.left;
+        tmp.data=root.data;
+        tmp2.right=deleteFromTreeA(root.data.a, tmp2.right);
+        return tmp;
+      }
+    }
+    return null;
   }
 }
 
@@ -223,7 +280,14 @@ class Main{
     tree.insertInTree(node);
     tree.insertInTree(node2);
     tree.insertInTree(new NodeT(0, 1, "Divya Dadarya"));
-    System.out.println(tree.root.left.data.name);
+    tree.insertInTree(new NodeT(-1, 0, "Ankur Srivastava"));
+    tree.insertInTree(new NodeT(-2, -1, "Aryaman Pande"));
+    tree.insertInTree(new NodeT(3, 4, "Vihaan Verma"));
+    tree.insertInTree(new NodeT(-3, -2, "Safuvan Sajid"));
+    // tree.printTree();
+    System.out.println(tree.searchTreeByIdA(1).name);
+    tree.delete(1);
+    tree.printTree();
 
 
     //----- GENERAL METHODS -----//

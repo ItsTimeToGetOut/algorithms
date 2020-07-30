@@ -99,6 +99,7 @@ class NodeT{
   }
 }
 
+
 class UF{
   public UF(int N){
     id = new int[N];
@@ -274,20 +275,32 @@ class Main{
     // System.out.println(queue.peek().next);
 
     //----- TREES -----//
-    Tree tree = new Tree();
-    NodeT node = new NodeT(1, 2, "Shubhendu Singh");
-    NodeT node2 = new NodeT(2, 3, "Mayank Tolani");
-    tree.insertInTree(node);
-    tree.insertInTree(node2);
-    tree.insertInTree(new NodeT(0, 1, "Divya Dadarya"));
-    tree.insertInTree(new NodeT(-1, 0, "Ankur Srivastava"));
-    tree.insertInTree(new NodeT(-2, -1, "Aryaman Pande"));
-    tree.insertInTree(new NodeT(3, 4, "Vihaan Verma"));
-    tree.insertInTree(new NodeT(-3, -2, "Safuvan Sajid"));
+
+    //AVL and balancing not implemented, please do that.
+
+    // Tree tree = new Tree();
+    // NodeT node = new NodeT(1, 2, "Shubhendu Singh");
+    // NodeT node2 = new NodeT(2, 3, "Mayank Tolani");
+    // tree.insertInTree(node);
+    // tree.insertInTree(node2);
+    // tree.insertInTree(new NodeT(0, 1, "Divya Dadarya"));
+    // tree.insertInTree(new NodeT(-1, 0, "Ankur Srivastava"));
+    // tree.insertInTree(new NodeT(-2, -1, "Aryaman Pande"));
+    // tree.insertInTree(new NodeT(3, 4, "Vihaan Verma"));
+    // tree.insertInTree(new NodeT(-3, -2, "Safuvan Sajid"));
+    // tree.insertInTree(new NodeT(4, 5, "Joieta Banerjee"));
+    // tree.insertInTree(new NodeT(-4, -3, "Sajjita Bhatacharya"));
+    // tree.insertInTree(new NodeT(5, 6, "Lakshay Gupta"));
+    // tree.insertInTree(new NodeT(-5, -4, "Adhyan Pandey"));
+    // tree.insertInTree(new NodeT(6, 7, "Shagun Majotra"));
+    // tree.insertInTree(new NodeT(-6, -5, "Saloni Varshney"));
+    // tree.insertInTree(new NodeT(7, 8, "Manasi Potnis"));
+    // tree.insertInTree(new NodeT(-7, -6, "Sanyam Jain"));
+
     // tree.printTree();
-    System.out.println(tree.searchTreeByIdA(1).name);
-    tree.delete(1);
-    tree.printTree();
+    // System.out.println(tree.searchTreeByIdA(2).name);
+    // tree.delete(2);
+    // tree.printTree();
 
 
     //----- GENERAL METHODS -----//

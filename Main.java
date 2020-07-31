@@ -100,6 +100,55 @@ class NodeT{
 }
 
 
+class Graph<T>{
+  private Map<T, List<T>> map = new HashMap<>();
+
+  public void addVertex(T s){ 
+    map.put(s, new LinkedList<T>()); 
+  }
+
+  public void addEdge(T source, T destination, boolean bidirectional){ 
+    if(!map.containsKey(source))addVertex(source); 
+    if(!map.containsKey(destination))addVertex(destination); 
+    map.get(source).add(destination); 
+    if (bidirectional == true)map.get(destination).add(source);  
+  }
+
+  public int getVertexCount(){ 
+    return map.keySet().size(); 
+  }
+
+  public int getEdgesCount(boolean bidirection){ 
+    int count = 0; 
+    for (T v : map.keySet())count += map.get(v).size();
+    if (bidirection == true)count=count/2;
+    return count;
+    }  
+
+  public boolean containsVertex(T s){
+    return map.containsKey(s);
+  }
+
+  public boolean hasEdge(T s, T d){
+    return map.get(s).contains(d);
+  }
+
+  public String showGraph(){ 
+    StringBuilder builder = new StringBuilder(); 
+    for (T v : map.keySet()) { 
+      builder.append(v.toString() + ": "); 
+      for (T w : map.get(v))builder.append(w.toString() + " "); 
+      builder.append("\n");
+    } 
+    return (builder.toString()); 
+  }
+
+
+}
+
+
+
+
 class UF{
   public UF(int N){
     id = new int[N];
@@ -121,49 +170,52 @@ class NodeS {
   int next;
 }
 
-class LinkedList{
-  Node head;
-  public static class Node {
-    Node(int v){value=v;}
-    int value;
-    Node next;
-  }
+// ----- Uncomment this when using custom linked list ----- //
+// ----- comment this when using graphs and delete its class file ----- //
 
-  public static LinkedList insert(LinkedList list, int value){ 
-    Node new_node = new Node(value); 
-    new_node.next = null; 
-    if (list.head == null)list.head = new_node;  
-    else {
-      Node last = list.head; 
-      while (last.next != null)last = last.next;  
-      last.next = new_node; 
-    } 
-    return list; 
-  } 
-  public static void printList(LinkedList list) { 
-    Node currNode = list.head; 
-    System.out.print("LinkedList: "); 
-    while (currNode != null) { 
-      System.out.print(currNode.value + " "); 
-      currNode = currNode.next; 
-    } 
-    System.out.println();
-  }
+// class LinkedList{
+//   Node head;
+//   public static class Node {
+//     Node(int v){value=v;}
+//     int value;
+//     Node next;
+//   }
 
-  public static void reverse(LinkedList list){
-    Node current=list.head;
-    Node next=null;
-    Node prev=null;
-    while(current!=null){
-      next=current.next;
-      current.next=prev;
-      prev=current;
-      current=next;
-    }
-    list.head=prev;
-  } 
+//   public static LinkedList insert(LinkedList list, int value){ 
+//     Node new_node = new Node(value); 
+//     new_node.next = null; 
+//     if (list.head == null)list.head = new_node;  
+//     else {
+//       Node last = list.head; 
+//       while (last.next != null)last = last.next;  
+//       last.next = new_node; 
+//     } 
+//     return list; 
+//   } 
+//   public static void printList(LinkedList list) { 
+//     Node currNode = list.head; 
+//     System.out.print("LinkedList: "); 
+//     while (currNode != null) { 
+//       System.out.print(currNode.value + " "); 
+//       currNode = currNode.next; 
+//     } 
+//     System.out.println();
+//   }
 
-}
+//   public static void reverse(LinkedList list){
+//     Node current=list.head;
+//     Node next=null;
+//     Node prev=null;
+//     while(current!=null){
+//       next=current.next;
+//       current.next=prev;
+//       prev=current;
+//       current=next;
+//     }
+//     list.head=prev;
+//   } 
+
+// }
 
 
 class Main{
@@ -232,15 +284,15 @@ class Main{
   public static void main(String[] args) {
 
     Main a = new Main();
-    LinkedList list = new LinkedList();
-    list = LinkedList.insert(list, 1); 
-    list = LinkedList.insert(list, 2); 
-    list = LinkedList.insert(list, 3); 
-    list = LinkedList.insert(list, 4); 
-    list = LinkedList.insert(list, 5); 
-    list = LinkedList.insert(list, 6); 
-    list = LinkedList.insert(list, 7); 
-    list = LinkedList.insert(list, 8); 
+    // LinkedList list = new LinkedList();
+    // list = LinkedList.insert(list, 1); 
+    // list = LinkedList.insert(list, 2); 
+    // list = LinkedList.insert(list, 3); 
+    // list = LinkedList.insert(list, 4); 
+    // list = LinkedList.insert(list, 5); 
+    // list = LinkedList.insert(list, 6); 
+    // list = LinkedList.insert(list, 7); 
+    // list = LinkedList.insert(list, 8); 
     String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
     String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
 
@@ -309,6 +361,11 @@ class Main{
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
+
+
+    //----- GRAPHS -----//
+    Graph<Integer> g = new Graph<Integer>(); 
+
 
     //----- UNION FIND -----//
 

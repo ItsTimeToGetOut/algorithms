@@ -365,6 +365,19 @@ class Main{
 
     //----- GRAPHS -----//
     Graph<Integer> g = new Graph<Integer>(); 
+    g.addEdge(0, 1, true); 
+    g.addEdge(0, 4, true); 
+    g.addEdge(1, 2, true); 
+    g.addEdge(1, 3, true); 
+    g.addEdge(1, 4, true); 
+    g.addEdge(2, 3, true); 
+    g.addEdge(3, 4, true);
+    System.out.println(g.showGraph());
+    System.out.println(g.getVertexCount());
+    System.out.println(g.getEdgesCount(true));
+    System.out.println(g.hasEdge(3, 5));
+    System.out.println(g.containsVertex(5));
+
 
 
     //----- UNION FIND -----//

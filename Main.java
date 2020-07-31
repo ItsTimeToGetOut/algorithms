@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+
+
 class Tree{
   TNode root;
   Tree(){
@@ -40,9 +42,11 @@ class Tree{
     }
   }
 
+
   NodeT searchTreeByIdA(int a){
     return searchTreeA(a, root);
   }
+
 
   NodeT searchTreeA(int a, TNode root){
     if(root==null)return new NodeT(-1, -1, "Not Found");
@@ -51,9 +55,11 @@ class Tree{
     else return root.data;
   }
 
+
   void delete(int a){
     deleteFromTreeA(a, root);
   }
+
 
   TNode deleteFromTreeA(int a, TNode root){
     if(root==null)return null;
@@ -77,6 +83,9 @@ class Tree{
   }
 }
 
+
+
+
 class TNode{
   TNode left;
   TNode right;
@@ -87,6 +96,9 @@ class TNode{
     right=null;
   }
 }
+
+
+
 
 class NodeT{
   int a;
@@ -100,12 +112,16 @@ class NodeT{
 }
 
 
+
+
 class Graph<T>{
   private Map<T, List<T>> map = new HashMap<>();
+
 
   public void addVertex(T s){ 
     map.put(s, new LinkedList<T>()); 
   }
+
 
   public void addEdge(T source, T destination, boolean bidirectional){ 
     if(!map.containsKey(source))addVertex(source); 
@@ -114,9 +130,11 @@ class Graph<T>{
     if (bidirectional == true)map.get(destination).add(source);  
   }
 
+
   public int getVertexCount(){ 
     return map.keySet().size(); 
   }
+
 
   public int getEdgesCount(boolean bidirection){ 
     int count = 0; 
@@ -125,13 +143,16 @@ class Graph<T>{
     return count;
     }  
 
+
   public boolean containsVertex(T s){
     return map.containsKey(s);
   }
 
+
   public boolean hasEdge(T s, T d){
     return map.get(s).contains(d);
   }
+
 
   public String showGraph(){ 
     StringBuilder builder = new StringBuilder(); 
@@ -150,19 +171,30 @@ class Graph<T>{
 
 
 class UF{
+
+
   public UF(int N){
     id = new int[N];
     for(int i=0;i<N;i++)id[i]=i;
   }
+
+
   private int[] id;
+
+
   boolean connected(int p, int q){
     return id[p]==id[q];
   }
+
+
   void unionQuadratic(int p, int q){
     int pid=id[p], qid=id[q];
     for(int i=0;i<id.length;i++)if(id[i]==pid)id[i]=qid;
   }
 }
+
+
+
 
 class NodeS {
   NodeS(int v, int n){value=v; next=n;}
@@ -170,8 +202,14 @@ class NodeS {
   int next;
 }
 
+
+
+
 // ----- Uncomment this when using custom linked list ----- //
 // ----- comment this when using graphs and delete its class file ----- //
+
+
+
 
 // class LinkedList{
 //   Node head;
@@ -180,6 +218,7 @@ class NodeS {
 //     int value;
 //     Node next;
 //   }
+
 
 //   public static LinkedList insert(LinkedList list, int value){ 
 //     Node new_node = new Node(value); 
@@ -192,6 +231,8 @@ class NodeS {
 //     } 
 //     return list; 
 //   } 
+
+
 //   public static void printList(LinkedList list) { 
 //     Node currNode = list.head; 
 //     System.out.print("LinkedList: "); 
@@ -201,6 +242,7 @@ class NodeS {
 //     } 
 //     System.out.println();
 //   }
+
 
 //   public static void reverse(LinkedList list){
 //     Node current=list.head;
@@ -213,9 +255,17 @@ class NodeS {
 //       current=next;
 //     }
 //     list.head=prev;
-//   } 
+//   }
+
 
 // }
+
+
+
+
+// ----- GENERAL ALGORITHMS ----- //
+
+
 
 
 class Main{
@@ -224,6 +274,8 @@ class Main{
     for(int i=0;i<arr.length; i++)if(arr[i]=="nemo")return "Found Nemo";
     return "Nemo not found";
   }
+
+
 
   public int[] foobar1(int area){
     int []list=new int[100];
@@ -234,11 +286,15 @@ class Main{
       list[i]=(tmp*tmp);
       ++i;
     }
-        
+  
+
+
     int a[]= new int[i];
     for(int j=0;j<i;++j)a[j]=list[j];
     return a;
   }
+
+
 
   public boolean checkTwoArrayContainSameElement(String arr1[], String arr2[]){
     HashSet<String> table = new HashSet<String>();
@@ -246,6 +302,8 @@ class Main{
     for(int i=0;i<arr2.length;i++)if(table.contains(arr2[i]))return true;
     return false;
   }
+
+
 
   public String firstRecurringCharachterHM(String arr[]){
     HashMap<String, Integer> table = new HashMap<String, Integer>();
@@ -257,16 +315,21 @@ class Main{
   }
 
 
+
   public boolean checkTwoArrayContainSameElementBRUTEFORCE(String arr1[], String arr2[]){
     for(int i=0;i<arr1.length;i++)for(int j=0;j<arr2.length;j++)if(arr1[i]==arr2[j])return true;
     return false;
   }
+
+
 
   public int[] rotateArray(int[] nums, int k) {
     int n[] = new int[nums.length];
     for(int i=0;i<nums.length;i++)n[(i+k)%(nums.length)]=nums[i];
     return n;
     }
+
+
 
   public void moveZeroes(int[] nums) {
     for(int i=0;i<nums.length-1;i++){
@@ -281,9 +344,16 @@ class Main{
     }
   }
 
+
+
+
+
+  // ----- EXECUTION STARTS HERE ----- //
+
   public static void main(String[] args) {
 
     Main a = new Main();
+
     // LinkedList list = new LinkedList();
     // list = LinkedList.insert(list, 1); 
     // list = LinkedList.insert(list, 2); 
@@ -293,8 +363,8 @@ class Main{
     // list = LinkedList.insert(list, 6); 
     // list = LinkedList.insert(list, 7); 
     // list = LinkedList.insert(list, 8); 
-    String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
-    String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
+    // String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
+    // String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
 
 
 
@@ -310,11 +380,17 @@ class Main{
     // LinkedList.reverse(list);
     // LinkedList.printList(list);
 
+
+
+
     //----- STACKS ------//
     // Stack<NodeS> stack = new Stack<NodeS>();
     // NodeS node = new NodeS(1, 2);
     // stack.push(node);
     // System.out.println(stack.peek().next);
+
+
+
 
     //----- QUEUES -----//
 
@@ -325,6 +401,9 @@ class Main{
     // NodeS node = new NodeS(1, 2);
     // queue.add(node);
     // System.out.println(queue.peek().next);
+
+
+
 
     //----- TREES -----//
 
@@ -355,6 +434,29 @@ class Main{
     // tree.printTree();
 
 
+
+
+    //----- GRAPHS -----//
+
+    //before using this check that the linked list class is commented and the .class file deleted
+
+    // Graph<Integer> g = new Graph<Integer>(); 
+    // g.addEdge(0, 1, true); 
+    // g.addEdge(0, 4, true); 
+    // g.addEdge(1, 2, true); 
+    // g.addEdge(1, 3, true); 
+    // g.addEdge(1, 4, true); 
+    // g.addEdge(2, 3, true); 
+    // g.addEdge(3, 4, true);
+    // System.out.println(g.showGraph());
+    // System.out.println(g.getVertexCount());
+    // System.out.println(g.getEdgesCount(true));
+    // System.out.println(g.hasEdge(3, 5));
+    // System.out.println(g.containsVertex(5));
+
+
+
+
     //----- GENERAL METHODS -----//
     // System.out.println(a.firstRecurringCharachterHM(arr1));
     // System.out.println(a.checkTwoArrayContainSameElementBRUTEFORCE(arr1, arr2));
@@ -363,27 +465,16 @@ class Main{
     // System.out.println(a.findNemo(arr));
 
 
-    //----- GRAPHS -----//
-    Graph<Integer> g = new Graph<Integer>(); 
-    g.addEdge(0, 1, true); 
-    g.addEdge(0, 4, true); 
-    g.addEdge(1, 2, true); 
-    g.addEdge(1, 3, true); 
-    g.addEdge(1, 4, true); 
-    g.addEdge(2, 3, true); 
-    g.addEdge(3, 4, true);
-    System.out.println(g.showGraph());
-    System.out.println(g.getVertexCount());
-    System.out.println(g.getEdgesCount(true));
-    System.out.println(g.hasEdge(3, 5));
-    System.out.println(g.containsVertex(5));
-
 
 
     //----- UNION FIND -----//
 
 
+
+
+
     double end = System.currentTimeMillis();
+
     System.out.println((end-start)+" ms");
 
   }

@@ -270,6 +270,15 @@ class NodeS {
 
 class Main{
 
+
+
+  public int goodOlFibonacci(int index){
+    if(index<2)return index;
+    return goodOlFibonacci(index-1)+goodOlFibonacci(index-2);
+  }
+
+
+
   public String findNemo(String arr[]){
     for(int i=0;i<arr.length; i++)if(arr[i]=="nemo")return "Found Nemo";
     return "Nemo not found";
@@ -286,9 +295,6 @@ class Main{
       list[i]=(tmp*tmp);
       ++i;
     }
-  
-
-
     int a[]= new int[i];
     for(int j=0;j<i;++j)a[j]=list[j];
     return a;
@@ -463,6 +469,7 @@ class Main{
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
+    // System.out.println(a.goodOlFibonacci(10));
 
 
 

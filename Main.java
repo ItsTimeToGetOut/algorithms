@@ -272,9 +272,29 @@ class Main{
 
 
 
+  public String reverseStringRecur(String s){
+    if(s.length()<2)return s;
+    return s.charAt(s.length()-1)+reverseStringRecur(s.substring(0,s.length()-1));
+  }
+
+
+
   public int goodOlFibonacci(int index){
     if(index<2)return index;
     return goodOlFibonacci(index-1)+goodOlFibonacci(index-2);
+  }
+
+
+
+  public int basicFibonacci(int index){
+    if(index<2)return index;
+    int a1=0, a2=1, answer=0;
+    for(int i=2;i<=index;i++){
+      answer=a1+a2;
+      a1=a2;
+      a2=answer;
+    }
+    return answer;
   }
 
 
@@ -352,9 +372,142 @@ class Main{
 
 
 
+  // ----- SORTING TECHNIQUES ----- //
+
+
+
+  void bubbleSort(int[] array){
+    for(int i=0;i<array.length;i++){
+      for(int j=0;j<array.length-i-1;j++){
+        if(array[j]>array[j+1]){
+          int tmp=array[j];
+          array[j]=array[j+1];
+          array[j+1]=tmp;
+        }
+      }
+    }
+  }
+
+
+
+  void selectionSort(int[] array){
+    for(int i=0;i<array.length-1;i++){
+      int min = i;
+      for(int j=i+1;j<array.length;j++)min=(array[j]<array[min])?j:min;
+      int tmp=array[i];
+      array[i]=array[min];
+      array[min]=tmp;
+    }
+  }
+
+
+
+  void insertionSort(int[] arr){
+    for(int i=1;i<arr.length;i++){
+      int key=arr[i];
+      int j=i-1;
+      while(j>=0&&arr[j]>key){ 
+        arr[j+1]=arr[j]; 
+        j--; 
+      } 
+      arr[j+1]=key;
+    }
+  }
+
+
+
+  void mergeSort(int[] arr){
+    sort(arr, 0, arr.length-1);
+  }
+
+
+
+  void sort(int arr[], int l, int r){ 
+    if(l<r){
+      int m = (l + r) / 2; 
+      sort(arr, l, m); 
+      sort(arr, m + 1, r); 
+      merge(arr, l, m, r); 
+    } 
+  }
+
+
+
+  void merge(int arr[], int l, int m, int r){ 
+    int n1=m-l+1; 
+    int n2=r-m; 
+    int L[]=new int[n1]; 
+    int R[]=new int[n2]; 
+    for (int i=0;i<n1;++i)L[i]=arr[l+i]; 
+    for (int j=0;j<n2;++j)R[j]=arr[m+1+j]; 
+    int i=0,j=0; 
+    int k=l; 
+    while (i<n1&&j<n2){ 
+      if(L[i]<=R[j]){ 
+        arr[k]=L[i]; 
+        i++; 
+      } 
+      else{ 
+        arr[k]=R[j]; 
+        j++; 
+      } 
+      k++; 
+    } 
+    while(i<n1){ 
+      arr[k]=L[i]; 
+      i++; 
+      k++; 
+    } 
+    while(j<n2){ 
+      arr[k]=R[j]; 
+      j++; 
+      k++; 
+    } 
+  }
+
+
+
+  void quickSort(int arr[]){
+    qSort(arr, 0, arr.length-1);
+  }
+
+
+
+  void qSort(int arr[], int low, int high){
+    if (low<high){ 
+      int pi=partition(arr, low, high); 
+      qSort(arr, low, pi-1); 
+      qSort(arr, pi+1, high); 
+    }
+  }
+
+
+
+  int partition(int arr[], int low, int high){ 
+    int pivot=arr[high];  
+    int i=(low-1);
+    for(int j=low;j<high;j++){ 
+      if (arr[j]<pivot){ 
+        i++; 
+        int temp=arr[i]; 
+        arr[i]=arr[j]; 
+        arr[j]=temp; 
+      } 
+    }
+    int temp=arr[i+1]; 
+    arr[i+1]=arr[high]; 
+    arr[high]=temp; 
+    return i+1; 
+  }
+
+
+
+
 
 
   // ----- EXECUTION STARTS HERE ----- //
+
+
 
   public static void main(String[] args) {
 
@@ -371,6 +524,7 @@ class Main{
     // list = LinkedList.insert(list, 8); 
     // String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
     // String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
+    // int arr[]={9,4,6,1,2,0,5,7,3,8};
 
 
 
@@ -382,6 +536,16 @@ class Main{
 
 
     //----- LINKED LIST METHODS -----//
+
+    // use only one of these
+
+    // LinkedList<NodeT> list = new LinkedList<NodeT>(); // predefined java list
+    // List<NodeT> list = new LinkedList<NodeT>(); // predefined java list 
+
+
+    // these are linked list of custom Linked list class above, uncomment that to use these
+
+
     // LinkedList.printList(list);
     // LinkedList.reverse(list);
     // LinkedList.printList(list);
@@ -470,6 +634,14 @@ class Main{
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
     // System.out.println(a.goodOlFibonacci(10));
+    // System.out.println(a.reverseStringRecur("Shubhendu"));
+    // System.out.println(a.basicFibonacci(30));
+    // a.bubbleSort(arr);
+    // a.selectionSort(arr);
+    // a.insertionSort(arr);
+    // a.mergeSort(arr);
+    // a.quickSort(arr);
+    // for(int i=0;i<arr.length;i++)System.out.print(" "+ arr[i]);
 
 
 
@@ -481,6 +653,8 @@ class Main{
 
 
     double end = System.currentTimeMillis();
+
+    System.out.println();
 
     System.out.println((end-start)+" ms");
 

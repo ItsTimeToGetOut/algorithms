@@ -502,6 +502,21 @@ class Main{
 
 
 
+  // This is my own implementation of a sorting technique that sorts an array in O(n) time
+  // at the expense of space. Not optimal, need to satisfy a lot of conditions, DONT LEARN.
+  void sortOn(int arr[]){
+    int n=arr.length;
+    int max=arr[0];
+    for(int i=1;i<n;i++)max=arr[i]>max?arr[i]:max;
+    int []array=new int[max+1];
+    for(int i=0;i<n;i++)array[arr[i]]=arr[i];
+    arr[0]=0;
+    n=1;
+    for(int i=0;i<array.length;i++)if(array[i]!=0)arr[n++]=array[i];
+  }
+
+
+
 
 
 
@@ -524,7 +539,7 @@ class Main{
     // list = LinkedList.insert(list, 8); 
     // String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
     // String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
-    // int arr[]={9,4,6,1,2,0,5,7,3,8};
+    int arr[]={9,4,6,1,2,0,5,7,3,8};
 
 
 
@@ -641,6 +656,7 @@ class Main{
     // a.insertionSort(arr);
     // a.mergeSort(arr);
     // a.quickSort(arr);
+    // a.sortOn(arr);
     // for(int i=0;i<arr.length;i++)System.out.print(" "+ arr[i]);
 
 

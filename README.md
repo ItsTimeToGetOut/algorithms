@@ -9,7 +9,7 @@ Pull Requests are appreciated for suggestions.
 <br>
 <br>
 
-Any help in *AVL & BALANCING TREES* will be appreciated.
+Any help in *AVL & BALANCING TREES* and *DFS and BFS for Graphs* will be appreciated.
 
 <br>
 Programs have been written in a manner which can somehow show the real world usage to intrested people.

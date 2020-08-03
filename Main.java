@@ -550,6 +550,7 @@ class Main{
 
 
   HashMap<Integer, Integer> FIBOmemo = new HashMap<Integer, Integer>(); //for fiboDP()
+  HashMap<Integer, Integer> KWaysmemo = new HashMap<Integer, Integer>(); //for kWaysDP()
 
 
 
@@ -558,6 +559,19 @@ class Main{
     if(index<=2)return 1;
     int f = fiboDP(index-1)+fiboDP(index-2);
     FIBOmemo.put(index, f);
+    return f;
+  }
+
+
+
+
+  int kWaysDP(int n, int k){
+    if(KWaysmemo.containsKey(n))return KWaysmemo.get(n);
+    if(n<0)return 0;
+    if(n==0)return 1;
+    int f=0;
+    for(int i=1;i<=k;i++)f=f+kWaysDP(n-i, k);
+    FIBOmemo.put(n, f);
     return f;
   }
 
@@ -711,6 +725,7 @@ class Main{
 
     // ----- DYNAMIC PROGRAMMING ----- //
     // System.out.println(a.fiboDP(5000));
+    // System.out.println(a.kWaysDP(3, 2));
 
 
 

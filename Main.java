@@ -81,6 +81,29 @@ class Tree{
     }
     return null;
   }
+
+
+
+  NodeT bfs(int a){
+    queue.add(root);
+    return breadthFirstSearch(a);
+  }
+
+  public Queue<TNode> queue = new LinkedList<TNode>();
+  public ArrayList<NodeT> list = new ArrayList<NodeT>();
+
+  NodeT breadthFirstSearch(int a){
+    if(queue.peek()==null)return null;
+    if(queue.peek().data.a==a)return queue.peek().data;
+    list.add(queue.peek().data);
+    if(queue.peek().left!=null)queue.add(queue.peek().left);
+    if(queue.peek().right!=null)queue.add(queue.peek().right);
+    queue.remove();
+    return breadthFirstSearch(a);
+  }
+
+
+
 }
 
 
@@ -517,6 +540,23 @@ class Main{
 
 
 
+  // ----- Dynamic Programming Functions ----- //
+
+
+
+  HashMap<Integer, Integer> FIBOmemo = new HashMap<Integer, Integer>(); //for fiboDP()
+
+
+
+  int fiboDP(int index){
+    if(FIBOmemo.containsKey(index))return FIBOmemo.get(index);
+    if(index<=2)return 1;
+    int f = fiboDP(index-1)+fiboDP(index-2);
+    FIBOmemo.put(index, f);
+    return f;
+  }
+
+
 
 
 
@@ -539,7 +579,7 @@ class Main{
     // list = LinkedList.insert(list, 8); 
     // String arr1[]={"nemo", "a", "b", "d", "z", "x", "y", "w"};
     // String arr2[]={"c", "e", "f", "s", "r", "q", "p", "o", "w"};
-    int arr[]={9,4,6,1,2,0,5,7,3,8};
+    // int arr[]={9,4,6,1,2,0,5,7,3,8};
 
 
 
@@ -618,6 +658,8 @@ class Main{
     // tree.delete(2);
     // tree.printTree();
 
+    // System.out.println(tree.bfs(-7).name);
+    // for(int i=0;i<tree.list.size();i++)System.out.println(tree.list.get(i).a);
 
 
 
@@ -648,9 +690,9 @@ class Main{
     // System.out.println(a.checkTwoArrayContainSameElement(arr1, arr2));
     // int b[] = a.foobar1(k);
     // System.out.println(a.findNemo(arr));
-    // System.out.println(a.goodOlFibonacci(10));
+    // System.out.println(a.goodOlFibonacci(50));
     // System.out.println(a.reverseStringRecur("Shubhendu"));
-    // System.out.println(a.basicFibonacci(30));
+    // System.out.println(a.basicFibonacci(5000));
     // a.bubbleSort(arr);
     // a.selectionSort(arr);
     // a.insertionSort(arr);
@@ -658,6 +700,12 @@ class Main{
     // a.quickSort(arr);
     // a.sortOn(arr);
     // for(int i=0;i<arr.length;i++)System.out.print(" "+ arr[i]);
+
+
+
+
+    // ----- DYNAMIC PROGRAMMING ----- //
+    // System.out.println(a.fiboDP(5000));
 
 
 

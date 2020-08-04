@@ -224,7 +224,10 @@ class UF{
 
 
   int root(int i){
-    while(i!=id[i])i=id[i];
+    while(i!=id[i]){
+      id[i] = id[id[i]];
+      i=id[i];
+    }
     return i;
   }
 
@@ -755,9 +758,9 @@ class Main{
 
 
     //----- UNION FIND -----//
-    UF uf = new UF(10);
-    uf.unionRoots(4, 6);
-    System.out.println(uf.connected(4, 6));
+    // UF uf = new UF(10);
+    // uf.unionRoots(4, 6);
+    // System.out.println(uf.connected(4, 6));
 
 
 

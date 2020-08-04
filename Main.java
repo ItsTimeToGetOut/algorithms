@@ -203,11 +203,13 @@ class UF{
 
   public UF(int N){
     id = new int[N];
-    for(int i=0;i<N;i++)id[i]=i;
+    sz = new int[N];
+    for(int i=0;i<N;i++){id[i]=i; sz[i]=1;}
   }
 
 
   private int[] id;
+  private int[] sz;
 
 
   boolean connected(int p, int q){
@@ -219,6 +221,28 @@ class UF{
     int pid=id[p], qid=id[q];
     for(int i=0;i<id.length;i++)if(id[i]==pid)id[i]=qid;
   }
+
+
+  int root(int i){
+    while(i!=id[i])i=id[i];
+    return i;
+  }
+
+
+  boolean connectedRoots(int p, int q){
+    return root(p)==root(q);
+  }
+
+
+  void unionRoots(int p, int q){
+    int i=root(p);
+    int j=root(q);
+    if(i==j)return;
+    if(sz[i]<sz[j]){id[i]=j; sz[j]=sz[j]+sz[i];}
+    else {id[j]=i; sz[i]=sz[i]+sz[j];}
+  }
+
+
 }
 
 
@@ -731,7 +755,9 @@ class Main{
 
 
     //----- UNION FIND -----//
-
+    UF uf = new UF(10);
+    uf.unionRoots(4, 6);
+    System.out.println(uf.connected(4, 6));
 
 
 

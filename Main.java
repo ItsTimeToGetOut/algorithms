@@ -163,6 +163,24 @@ class Graph<T>{
   }
 
 
+  void DFS(int search){
+    boolean []visited = new boolean[getVertexCount()];
+    DFSRecur(search, visited);
+  }
+
+
+  void DFSRecur(int search, boolean visited[]){
+    visited[search] = true; 
+    System.out.print(search+" ");
+    Iterator<T> i = map.get(search).listIterator(); 
+    while (i.hasNext()){ 
+      int n = (int)i.next(); 
+      if (!visited[n])DFSRecur(n, visited); 
+    }
+  }
+
+
+
   public void addVertex(T s){ 
     map.put(s, new LinkedList<T>()); 
   }
@@ -400,8 +418,7 @@ class Main{
 
 
   public String foobar2_1(long x, long y){
-    long yc=1;
-    long k=0;
+    long yc=1, k=0;
     for(long i=0;i<y;i++)yc+=k++;
     ++y;
     for(long i=0;i<x-1;i++)yc+=y++;
@@ -760,6 +777,8 @@ class Main{
     // System.out.println(g.hasEdge(3, 5));
     // System.out.println(g.containsVertex(5));
     // g.BFS(4);
+    // System.out.println();
+    // g.DFS(4);
 
 
 

@@ -399,6 +399,17 @@ class Main{
 
 
 
+  public String foobar2_1(long x, long y){
+    long yc=1;
+    long k=0;
+    for(long i=0;i<y;i++)yc+=k++;
+    ++y;
+    for(long i=0;i<x-1;i++)yc+=y++;
+    return String.valueOf(yc);
+  }
+
+
+
   public boolean checkTwoArrayContainSameElement(String arr1[], String arr2[]){
     HashSet<String> table = new HashSet<String>();
     for(int i=0;i<arr1.length;i++)if(!table.contains(arr1[i]))table.add(arr1[i]);
@@ -769,6 +780,8 @@ class Main{
     // a.quickSort(arr);
     // a.sortOn(arr);
     // for(int i=0;i<arr.length;i++)System.out.print(" "+ arr[i]);
+    // long xx=5, yy=10;
+    // System.out.println(a.foobar2_1(xx, yy));
 
 
 

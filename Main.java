@@ -141,6 +141,28 @@ class Graph<T>{
   private Map<T, List<T>> map = new HashMap<>();
 
 
+  void BFS(int search){
+    int s;
+    boolean []visited = new boolean[getVertexCount()];
+    LinkedList<Integer> queue = new LinkedList<Integer>();
+    queue.add(search);
+    visited[search]=true;
+    while(queue.size()!=0){
+      s = queue.poll(); 
+      System.out.print(s+" ");
+      Iterator<T> i = map.get(s).listIterator(); 
+      while (i.hasNext()){
+        int n = (int)i.next(); 
+        if (!visited[n]){ 
+          visited[n] = true; 
+          queue.add(n); 
+        } 
+      }
+    }
+
+  }
+
+
   public void addVertex(T s){ 
     map.put(s, new LinkedList<T>()); 
   }
@@ -726,6 +748,7 @@ class Main{
     // System.out.println(g.getEdgesCount(true));
     // System.out.println(g.hasEdge(3, 5));
     // System.out.println(g.containsVertex(5));
+    // g.BFS(4);
 
 
 

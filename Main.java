@@ -226,7 +226,7 @@ class Graph<T>{
     } 
     return (builder.toString()); 
   }
-  
+
 
 
 
@@ -421,6 +421,51 @@ class Main{
     for(long i=0;i<x-1;i++)yc+=y++;
     return String.valueOf(yc);
   }
+
+
+
+  public void foobar2_2Swap(String []l, int []a, int []b, int []c, int j){
+    String tmp=l[j];
+    l[j]=l[j+1];
+    l[j+1]=tmp;
+    int tmpa=a[j],tmpb=b[j],tmpc=c[j];
+    a[j]=a[j+1];
+    a[j+1]=tmpa;
+    b[j]=b[j+1];
+    b[j+1]=tmpb;
+    c[j]=c[j+1];
+    c[j+1]=tmpc;
+  }
+
+
+
+
+  public String[] foobar2_2(String []l){
+    int a[]=new int[l.length];
+    int b[]=new int[l.length];
+    int c[]=new int[l.length];
+    for(int i=0;i<l.length;i++){
+      int index=l[i].indexOf('.');
+      if(index!=-1){
+        a[i]=Integer.parseInt(l[i].substring(0, index));
+        int newindex=l[i].indexOf('.',index+1);
+        if(newindex!=-1){
+          b[i]=Integer.parseInt(l[i].substring(index+1, newindex));
+          c[i]=Integer.parseInt(l[i].substring(newindex+1));
+        }else{b[i]=Integer.parseInt(l[i].substring(index+1)); c[i]=-1;}
+      }else {a[i]=Integer.parseInt(l[i]); b[i]=-1; c[i]=-1;}
+    }
+    for(int i=0;i<l.length;i++){
+      for(int j=0;j<l.length-i-1;j++){
+        if(a[j]>a[j+1])foobar2_2Swap(l,a,b,c,j);
+        else if(a[j]>=a[j+1]&&b[j]>b[j+1])foobar2_2Swap(l,a,b,c,j);
+        else if(a[j]>=a[j+1]&&b[j]>=b[j+1]&&c[j]>c[j+1])foobar2_2Swap(l,a,b,c,j);
+      }
+    }
+    for(int i=0;i<l.length;i++)System.out.println(l[i]);
+    return l;
+  }
+
 
 
 
@@ -798,6 +843,9 @@ class Main{
     // for(int i=0;i<arr.length;i++)System.out.print(" "+ arr[i]);
     // long xx=5, yy=10;
     // System.out.println(a.foobar2_1(xx, yy));
+    // String foob[]={"1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"};
+    // a.foobar2_2(foob);
+
 
 
 

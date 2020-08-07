@@ -519,6 +519,19 @@ class Main{
 
 
 
+
+  public int singleNumber(int[] nums) {
+    HashSet<Integer> list = new HashSet<Integer>();
+    for(int i=0;i<nums.length;i++){
+      if(list.contains(nums[i]))list.remove(nums[i]);
+      else list.add(nums[i]);
+    }
+    if(list.isEmpty())return 0;
+    return list.iterator().next();
+  }
+
+
+
   // ----- SORTING TECHNIQUES ----- //
 
 
@@ -845,6 +858,8 @@ class Main{
     // System.out.println(a.foobar2_1(xx, yy));
     // String foob[]={"1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"};
     // a.foobar2_2(foob);
+    // int []doubleNumber = {2,2,1,1,4,7,7,8,8};
+    // System.out.println(a.singleNumber(doubleNumber));
 
 
 

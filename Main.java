@@ -468,6 +468,46 @@ class Main{
 
 
 
+  public int foobar3_1(int [][]map){
+    int mr=map.length;
+    int mc=map[0].length;
+    int visited[][] = new int[mr][mc];
+    int shortest=0;
+    int tempShort=0;
+    int cr=0,cc=0,cd=0;
+    int rowNum[] = {-1, 0, 0, 1}; 
+    int colNum[] = {0, -1, 1, 0}; 
+    Queue<Integer> row = new LinkedList<Integer>();
+    Queue<Integer> col = new LinkedList<Integer>();
+    Queue<Integer> dis = new LinkedList<Integer>();
+    row.add(0);
+    col.add(0);
+    dis.add(1);
+    visited[0][0]=1;
+    while(!row.isEmpty()){
+      cr=row.peek();
+      cc=col.peek();
+      cd=dis.peek();
+      if(cr==mr-1&&cc==mc-1)return cd;
+      row.remove();
+      col.remove();
+      dis.remove();
+      for(int i=0;i<4;i++){
+        int r=cr+rowNum[i];
+        int c=cc+colNum[i];
+        if(r>=0&&r<mr&&c>=0&&c<mc&&map[r][c]==0&&visited[r][c]==0){
+          visited[r][c]=1;
+          row.add(r);
+          col.add(c);
+          dis.add(cd+1);
+        }
+      }
+    }
+    return -1;
+  }
+
+
+
 
   public boolean checkTwoArrayContainSameElement(String arr1[], String arr2[]){
     HashSet<String> table = new HashSet<String>();
@@ -860,6 +900,13 @@ class Main{
     // a.foobar2_2(foob);
     // int []doubleNumber = {2,2,1,1,4,7,7,8,8};
     // System.out.println(a.singleNumber(doubleNumber));
+    // int [][]prison = {
+    //   {0,1,1},
+    //   {1,0,0},
+    //   {1,1,0},
+    // };
+
+    // System.out.println(a.foobar3_1(prison));
 
 
 

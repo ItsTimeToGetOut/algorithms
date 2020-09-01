@@ -572,6 +572,25 @@ class Main{
 
 
 
+  // ----- SEARCHING  TECHNIQUES ----- //
+
+
+
+  int binarySearch(int a, int array[]){
+  	int low = 0;
+  	int high = array.length -1;
+  	int mid = high/2;
+  	while(low<high){
+  		if(a>array[mid]){low=mid+1; mid=(low+high)/2;}
+  		else if(a<array[mid]){high=mid-1; mid=(low+high)/2;}
+  		else if(array[mid]==a)return mid;
+
+  	}
+  	return -1;
+  }
+
+
+
   // ----- SORTING TECHNIQUES ----- //
 
 
@@ -905,8 +924,8 @@ class Main{
     //   {1,0,0},
     //   {1,1,0},
     // };
-
     // System.out.println(a.foobar3_1(prison));
+    // System.out.println(a.binarySearch(11, arr));
 
 
 

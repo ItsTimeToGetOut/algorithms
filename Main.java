@@ -8,6 +8,17 @@ class Tree{
   Tree(){
     root=null;
   }
+  
+ class TNode{
+  TNode left;
+  TNode right;
+  NodeT data;
+  TNode(NodeT object){
+    data=object;
+    left=null;
+    right=null;
+  }
+}
 
 
   public void insertInTree(NodeT node){
@@ -109,16 +120,7 @@ class Tree{
 
 
 
-class TNode{
-  TNode left;
-  TNode right;
-  NodeT data;
-  TNode(NodeT object){
-    data=object;
-    left=null;
-    right=null;
-  }
-}
+
 
 
 

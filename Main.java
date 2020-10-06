@@ -8,6 +8,18 @@ class Tree{
   Tree(){
     root=null;
   }
+  
+  class NodeT{
+  int a;
+  int b;
+  String name;
+  NodeT(int data1, int data2, String data3){
+    a=data1;
+    b=data2;
+    name=data3;
+  }
+}
+
 
 
   public void insertInTree(NodeT node){
@@ -49,7 +61,8 @@ class Tree{
 
 
   NodeT searchTreeA(int a, TNode root){
-    if(root==null)return new NodeT(-1, -1, "Not Found");
+    if(root==null)
+      return new NodeT(-1, -1, "Not Found");
     if(root.data.a>a)return searchTreeA(a, root.left);
     else if(root.data.a<a)return searchTreeA(a, root.right);
     else return root.data;
@@ -123,16 +136,6 @@ class TNode{
 
 
 
-class NodeT{
-  int a;
-  int b;
-  String name;
-  NodeT(int data1, int data2, String data3){
-    a=data1;
-    b=data2;
-    name=data3;
-  }
-}
 
 
 

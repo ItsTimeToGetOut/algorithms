@@ -8,6 +8,18 @@ class Tree{
   Tree(){
     root=null;
   }
+  
+  class NodeT{
+  int a;
+  int b;
+  String name;
+  NodeT(int data1, int data2, String data3){
+    a=data1;
+    b=data2;
+    name=data3;
+  }
+}
+
 
 
   public void insertInTree(NodeT node){
@@ -123,16 +135,6 @@ class TNode{
 
 
 
-class NodeT{
-  int a;
-  int b;
-  String name;
-  NodeT(int data1, int data2, String data3){
-    a=data1;
-    b=data2;
-    name=data3;
-  }
-}
 
 
 
